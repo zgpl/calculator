@@ -1,0 +1,55 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: moccasin;
+    display: flex; 
+    height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: lavender;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 5px solid plum;
+    width: 350px;
+    height: 400px;
+    gap: 30px;
+    border-radius: 10px;
+}
+
+.display, button {
+    font-family: "Times New Roman", Times, serif;
+    background-color: palevioletred;
+    color: honeydew;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+.display {
+    display: flex;
+    width: 300px;
+    height: 70px;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 5px 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 15px 20px;
+}
+
+ button {
+    width: 60px;
+    height: 45px;
+    border: none;
+    padding: 5px 10px;
+} 
