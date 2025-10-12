@@ -31,3 +31,11 @@ const operate = function (firstNumber, operator, secondNumber) {
         return null;
       }
 };
+
+    const buttons = document.querySelectorAll('.buttons button');
+    const display = document.querySelector('.display');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            display.textContent = button.textContent; 
+            });
+        });
