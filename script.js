@@ -14,11 +14,13 @@ const divide = function (a, b) {
     return a / b;
 };
 
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = '';
+let operator = '';
+let secondNumber = '';
 
 const operate = function (firstNumber, operator, secondNumber) {
+    const expression = `${firstNumber} ${operator} ${secondNumber}`;
+    console.log(expression);
     if (operator == '+') {
         return add(firstNumber, secondNumber);
       } else if (operator == '-') {
@@ -38,6 +40,7 @@ const operatorButtons = document.querySelectorAll('.operator');
 const clearButton = document.querySelector('.clear');
 const display = document.querySelector('.display');
 let currentDisplay = display.textContent;
+let readyToAppendNumbers = false;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -47,23 +50,31 @@ buttons.forEach(button => {
             secondNumber = '';
             operator = '';
         } else if (button.classList.contains('number')) { 
-            if (display.textContent === "0" || ["+", "-", "*", "/"].includes(display.textContent)) {
+            if (display.textContent === "0" || readyToAppendNumbers) {
                 display.textContent = button.textContent;
+                // idk if i need to reset this: readyToAppendNumbers = false;
             } else {
                 display.textContent += button.textContent;
             } 
             if (operator === '') {
-                firstNumber = display.textContent;
+                firstNumber = Number(display.textContent);
             } else {
-                secondNumber = display.textContent;
+                secondNumber = Number(display.textContent);
             }
         } else if (button.classList.contains('operator')) {
             if (button.textContent === "=") {
-            firstNumber = Number(firstNumber);
-            secondNumber = Number(secondNumber);
-            display.textContent = operate(firstNumber, operator, secondNumber);
+            readyToAppendNumbers = false;
+            const result = operate(firstNumber, operator, secondNumber);
+            display.textContent = result;
             } else {
-               operator = button.textContent;
+                if (firstNumber && operator && secondNumber) {
+                    const result = operate(firstNumber, operator, secondNumber);
+                    display.textContent = result; 
+                    firstNumber = result;
+                    secondNumber = '';
+                }
+                    operator = button.textContent;
+                    readyToAppendNumbers = true;
                 } 
             } currentDisplay = display.textContent;
     });
