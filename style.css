@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
     border: 5px solid plum;
     width: 350px;
-    height: 400px;
+    height: 450px;
     gap: 30px;
     border-radius: 10px;
 }
@@ -53,3 +53,17 @@ body {
     border: none;
     padding: 5px 10px;
 } 
+
+button:hover {
+    background-color: purple;
+}
+
+.all-clear {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.clear-entry {
+    flex-grow: 1;
+    margin-right: 20px;
+}
